@@ -15,16 +15,27 @@
 
 by: Narcoblix
 October 26th, 2012
-
+####################
+#   Description:   #
+####################
 This is a simple script that will tell you what your binds are in a source game.
 It analyzes what your config.cfg file contains, then it outputs to the console (and optionally
 to a file).
 
 It will ask for the location of a Source game's 'cfg' folder, then it will open the
 config file and tell you:
+ 1. What keys have binds, and what those keys are bound to.
+ 2. The keys that could have binds, but don't.
 
-What keys have binds, and what those keys are bound to.
-The keys that could have binds, but don't.
+###############
+#   Changes   #
+###############
+
+v0.01
+First Version
+ - What am I even doing
+ Bugs:
+ - My program is OBVIOUSLY perfect. Nothing to change here.
 '''
 
 def main():
