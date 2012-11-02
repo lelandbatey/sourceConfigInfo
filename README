@@ -1,0 +1,13 @@
+
+         SourceConfigInfo
+----------------------------------
+
+SourceConfigInfo is a short and simple python script for getting information about a Source engine game's Config.cfg file.
+
+Specifically, it will tell you:
+ 1. What keys have binds.
+ 2. The commands that are bound to each key
+ 3. What keys are't bound to anything.
+ 
+An example output of the script is:
+

@@ -31,6 +31,10 @@ config file and tell you:
 #   Changes   #
 ###############
 
+v0.02
+Additions
+ - Fixed whitespace handling for better parsing
+
 v0.01
 First Version
  - What am I even doing
@@ -51,31 +55,30 @@ def main():
     
     keyBindList = []
     bindList = []
+
     
     while not doneFlag:
-        curLine = configFile.readline() # Automatically iterates to the next line when this is called.
+        curLine = configFile.readline()
+        
         if len(curLine) > 0 and curLine.count('bind ') > 0:
-            buildLine = "" # Resets buildLine for this run of the loop
             
-            curLine = curLine.lower() # makes the current string all lowercase
-            curLine = curLine.split('"') # splits the current line into an array with different elements marked by where the double-quotes was.
+            buildLine = ""
+            curLine = curLine.lower()
+            curLine = curLine.split('"')
 
-            # Strips down to the key and the command bound to key
-            # Builds temporary string with both, delimited by '@' sign
-            for keys in curLine: 
-                if keys != " " and keys != "bind ":
-                    buildLine += keys
-                    buildLine += "@"
-            
+            for keys in curLine:
+                if (curLine.index(keys)+1)%2 < 1:
+                    buildLine += keys + "@"  
+                        
             # Adds the key being bound and the bound-value into differnt arrays for each   
             keyBindList.append(buildLine.split("@")[0])
             bindList.append(buildLine.split("@")[1])
             
         elif len(curLine) == 0:
             doneFlag = True
+            
     buildLine = ""
 
-    
     for keyBind in range(0,len(keyBindList),1):
         buildLine += 'The key {0:^16} is bound to {1:<22}\n'.format('"'+keyBindList[keyBind]+'"','"'+bindList[keyBind]+'"')
 
