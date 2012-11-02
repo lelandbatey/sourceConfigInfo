@@ -44,11 +44,11 @@ def main():
     doneFlag = False
     configFolder = input("Paste the path to the 'cfg' folder in here(Example: 'C:\Program Files\Steam\steamapps\common\Counter-Strike Global Offensive\csgo\cfg': ")
 
-    #configFolder.replace('\\','\\\\')
     try:
         configFile = open(configFolder+'\\config.cfg', 'r')
     except Exception as e:
         print(str(e))
+    
     keyBindList = []
     bindList = []
     
@@ -60,27 +60,31 @@ def main():
             curLine = curLine.lower() # makes the current string all lowercase
             curLine = curLine.split('"') # splits the current line into an array with different elements marked by where the double-quotes was.
 
-            # This loop strips out everything but the key being bound and the value that is being assigned to that key.
-            # Then it builds a temporary string with both values, separated by '@' signs.
-            for i in curLine: 
-                if i != " " and i != "bind ":
-                    buildLine += i
+            # Strips down to the key and the command bound to key
+            # Builds temporary string with both, delimited by '@' sign
+            for keys in curLine: 
+                if keys != " " and keys != "bind ":
+                    buildLine += keys
                     buildLine += "@"
+            
             # Adds the key being bound and the bound-value into differnt arrays for each   
             keyBindList.append(buildLine.split("@")[0])
             bindList.append(buildLine.split("@")[1])
+            
         elif len(curLine) == 0:
             doneFlag = True
     buildLine = ""
+
     
-    for j in range(0,len(keyBindList),1):
-        buildLine += 'The key {0:^16} is bound to {1:<22}\n'.format('"'+keyBindList[j]+'"','"'+bindList[j]+'"')
+    for keyBind in range(0,len(keyBindList),1):
+        buildLine += 'The key {0:^16} is bound to {1:<22}\n'.format('"'+keyBindList[keyBind]+'"','"'+bindList[keyBind]+'"')
+
         
-    for k in bindNames:
-        if k in keyBindList:
+    for keyBind in bindNames:
+        if keyBind in keyBindList:
             pass
         else:
-            buildLine += "The {0:^18} key is unbound\n".format('"'+k+'"')
+            buildLine += "The {0:^18} key is unbound\n".format('"'+keyBind+'"')
     
     print(buildLine)
 	
