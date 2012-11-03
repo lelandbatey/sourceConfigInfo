@@ -108,11 +108,11 @@ def getSourceDirectories():
 
     # Creates an index of all the folders that contain 'config.cfg' files
     if is64bit:
-        for root, dirs, files in os.walk('C:\\Program Files (x86)\\Steam\\steamapps\\'):
+        for root, dirs, files in os.walk('C:\\Program Files (x86)\\Steam\\steamapps'):
             for filename in fnmatch.filter(files, 'config.cfg'):
                 configLocation.append(root+'\\')
     else:
-        for root, dirs, files in os.walk('C:\\Program Files\\Steam\\steamapps\\'):
+        for root, dirs, files in os.walk('C:\\Program Files\\Steam\\steamapps'):
             for filename in fnmatch.filter(files, 'config.cfg'):
                 configLocation.append(root+'\\')
 
@@ -123,7 +123,7 @@ def chooseConfigDir(locationArray):
 
     print("Which file do you want to analyze?: ")
     for index, path in enumerate(locationArray):
-        print("["+str(index+1)+"]"+"  "+path)
+        print("{0:<7}".format("["+str(index+1)+"]")+path)
     indexChosen = input("Enter the config folder to be analyzed (default - 1): ") or 0
     if indexChosen: indexChosen = int(indexChosen)-1
     toReturn = locationArray[indexChosen]
@@ -133,7 +133,6 @@ def chooseConfigDir(locationArray):
 def main():
     locationsArray = getSourceDirectories()
     chosenLocation = chooseConfigDir(locationsArray)
-    print(chosenLocation)
     parsedData = parseConfig(chosenLocation)
     print(parsedData)
 main()
