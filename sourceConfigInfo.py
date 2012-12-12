@@ -13,7 +13,7 @@
 	\____/\____/_/ /_/_/ /_/\__, /___/_/ /_/_/  \____/ 
 	                       /____/                      
 
-by: Narcoblix
+by: Leland Batey
 October 26th, 2012
 ####################
 #   Description:   #
