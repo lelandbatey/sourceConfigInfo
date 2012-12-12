@@ -157,3 +157,9 @@ This example uses the default Team Fortress 2 "config.cfg" file [which can be fo
 	The      "mouse3"      key is unbound
 	The      "mouse4"      key is unbound
 	The      "mouse5"      key is unbound
+
+<sup>
+#####Notes#####
+So, after some additional time, I have discovered a way to read out the key-binds for a Source game from within the game in a very elegant way. In the console of any Source game, you can type `bind {the key to check the bind of}` and the command bound to that key will be output. This means that it is possible to write a Source script that will read out the binds of all keys.
+I will however keep this posted, simply because I think this can still be of use to someone, someday, maybe :)
+</sup>
